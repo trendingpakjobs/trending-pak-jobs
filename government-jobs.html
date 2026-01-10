@@ -1,1 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Government Jobs - Trending Pak Jobs</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<!-- NAVBAR -->
+<div class="navbar">
+    <div class="nav-left">Trending Pak Jobs</div>
+    <div class="nav-right">
+        <a href="index.html">Latest Jobs</a>
+        <a href="government-jobs.html">Government</a>
+        <a href="private-jobs.html">Private</a>
+        <a href="internships.html">Internships</a>
+        <a href="online-jobs.html">Online Jobs</a>
+        <img src="logo.png" class="logo">
+    </div>
+</div>
+
+<!-- SLOGAN -->
+<div class="slogan">
+Find Today’s Opportunities. Build Tomorrow’s Success.
+</div>
+
+<!-- ABOUT SECTION -->
+<div class="about">
+<b>Government Jobs:</b><br>
+Find the latest government job opportunities across Pakistan.  
+Search by city to easily find positions that match your location and apply directly via the official links.
+</div>
+  
+<!-- FILTER BOX -->
+<div class="filter-box">
+<input type="text" id="search" placeholder="Search job">
+<select id="city">
+<option value="all">All Cities</option>
+<!-- Major cities first -->
+<option>Islamabad</option>
+<option>Lahore</option>
+<option>Karachi</option>
+<option>Rawalpindi</option>
+<option>Gujranwala</option>
+<option>Peshawar</option>
+<option>Quetta</option>
+<!-- All districts alphabetically -->
+<option>Abbottabad</option>
+<option>Ahmed Nager Chatha</option>
+<option>Attock</option>
+<option>Bannu</option>
+<option>Bahawalnagar</option>
+<option>Bahawalpur</option>
+<option>Bajaur</option>
+<option>Chakwal</option>
+<option>Chaman</option>
+<option>Chiniot</option>
+<option>Charsadda</option>
+<option>Dadu</option>
+<option>Dera Ghazi Khan</option>
+<option>Dera Ismail Khan</option>
+<option>Faisalabad</option>
+<option>Ghotki</option>
+<option>Gilgit</option>
+<option>Hafizabad</option>
+<option>Hyderabad</option>
+<option>Jacobabad</option>
+<option>Jamshoro</option>
+<option>Jhang</option>
+<option>Jhelum</option>
+<option>Kamber Shahdadkot</option>
+<option>Khanewal</option>
+<option>Khanpur</option>
+<option>Khyber</option>
+<option>Khairpur</option>
+<option>Khushab</option>
+<option>Kohat</option>
+<option>Kohlu</option>
+<option>Kotli</option>
+<option>Lakki Marwat</option>
+<option>Lodhran</option>
+<option>Malakand</option>
+<option>Mandi Bahauddin</option>
+<option>Mansehra</option>
+<option>Mirpur</option>
+<option>Mirpur Khas</option>
+<option>Muzaffargarh</option>
+<option>Mardan</option>
+<option>Nankana Sahib</option>
+<option>Nawabshah</option>
+<option>Nowshera</option>
+<op<!-- ABOUT SECTION -->
+<div class="about">
+<b>Government Jobs:</b><br>
+Find the latest government job opportunities across Pakistan.  
+Search by city to easily find positions that match your location and apply directly via the official links.
+</div>tion>Okara</option>
+<option>Pakpattan</option>
+<option>Panjgur</option>
+<option>Rahim Yar Khan</option>
+<option>Rajanpur</option>
+<option>Sahiwal</option>
+<option>Sargodha</option>
+<option>Shaheed Benazirabad</option>
+<option>Sheikhupura</option>
+<option>Sialkot</option>
+<option>Sindh</option>
+<option>Sukkur</option>
+<option>Tando Allahyar</option>
+<option>Tando Muhammad Khan</option>
+<option>Tank</option>
+<option>Thatta</option>
+<option>Vehari</option>
+<option>Wah</option>
+<option>Wazirabad</option>
+</select>
+</div>
+
+<!-- JOBS CONTAINER -->
+<h2 style="text-align:center;color:#0b5d1e;">Government Jobs</h2>
+<div class="jobs-container">
+<!-- Paste your government job cards here -->
+<!-- Example card template:
+<div class="job-card" data-city="Lahore" data-category="government">
+<img src="GOV_IMAGE_URL" alt="Government job">
+<h3>Job Title</h3>
+<p><b>City:</b> Lahore</p>
+<p><b>Company:</b> ABC Government Department</p>
+<p><b>Salary:</b> 0 PKR</p>
+<p><b>Last Date:</b> DD MMM YYYY</p>
+<p><b>Education:</b> Requirement</p>
+<p><b>Requirements:</b> Skills needed</p>
+<p><b>Rules:</b> Job rules</p>
+<p><b>About Company:</b> About the department</p>
+<a href="APPLY_LINK" target="_blank" class="apply-btn">Apply Now</a>
+</div>
+-->
+</div>
+
+<!-- FOOTER -->
+<footer>
+© 2026 Trending Pak Jobs |
+<a href="privacy-policy.html">Privacy Policy</a> |
+<a href="disclaimer.html">Disclaimer</a>
+</footer>
+
+<!-- FILTER SCRIPT -->
+<script>
+const search = document.getElementById("search");
+const city = document.getElementById("city");
+const jobs = document.querySelectorAll(".job-card");
+
+function filterJobs(){
+    const text = search.value.toLowerCase();
+    const selectedCity = city.value;
+
+    jobs.forEach(job=>{
+        const jobText = job.innerText.toLowerCase();
+        const jobCity = job.getAttribute("data-city");
+
+        if((jobText.includes(text)) && (selectedCity=="all" || jobCity==selectedCity)){
+            job.style.display="block";
+        } else {
+            job.style.display="none";
+        }
+    });
+}
+
+search.addEventListener("keyup", filterJobs);
+city.addEventListener("change", filterJobs);
+</script>
+
+</body>
+  </html>
