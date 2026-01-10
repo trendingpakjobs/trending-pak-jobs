@@ -133,6 +133,16 @@ Gain practical experience and start building your professional career today.
     <p><b>Requirements:</b> Skills needed</p>
     <p><b>About Company:</b> About Organization</p>
     <a href="APPLY_LINK" target="_blank" class="apply-btn">Apply Now</a>
+
+    <!-- SOCIAL MEDIA SHARE BUTTONS -->
+<div class="share-buttons">
+    <a href="#" class="share-whatsapp">WhatsApp</a>
+    <a href="#" class="share-facebook">Facebook</a>
+    <a href="#" class="share-twitter">Twitter</a>
+    <a href="#" class="share-instagram">Instagram</a>
+    <a href="#" class="share-telegram">Telegram</a>
+</div>
+
 </div>
 -->
 </div>
@@ -170,5 +180,22 @@ search.addEventListener("keyup", filterJobs);
 city.addEventListener("change", filterJobs);
 </script>
 
+<script>
+const jobCards = document.querySelectorAll(".job-card");
+
+jobCards.forEach(card => {
+    const jobTitle = card.querySelector("h3").innerText;
+    const jobURL = window.location.href;
+
+    const encodedText = encodeURIComponent('Check this job: ' + jobTitle + ' ' + jobURL);
+
+    card.querySelector(".share-whatsapp").href = `https://wa.me/?text=${encodedText}`;
+    card.querySelector(".share-facebook").href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(jobURL)}`;
+    card.querySelector(".share-twitter").href = `https://twitter.com/intent/tweet?text=${encodedText}`;
+    card.querySelector(".share-instagram").href = `https://www.instagram.com/?url=${encodeURIComponent(jobURL)}`;
+    card.querySelector(".share-telegram").href = `https://t.me/share/url?url=${encodeURIComponent(jobURL)}&text=${encodedText}`;
+});
+</script>
+    
 </body>
 </html>
