@@ -241,24 +241,24 @@ footer a{
 
 }
 
-/* HERO VIDEO CONTAINER */
-.hero-video-container {
+.hero-video {
   position: relative;
   width: 100%;
+  height: 0;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
   overflow: hidden;
 }
 
-/* RESPONSIVE 16:9 VIDEO */
-.hero-video {
+.hero-video video {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: auto;       /* maintain aspect ratio */
-  max-height: 60vh;   /* desktop: max 60% of viewport height */
-  object-fit: cover;
+  height: 100%;
+  object-fit: cover;  /* keeps 16:9 ratio and prevents stretching */
   display: block;
-  z-index: 1;
 }
 
-/* OVERLAY CONTENT ON VIDEO */
 .hero-overlay {
   position: absolute;
   top: 50%;
@@ -266,24 +266,21 @@ footer a{
   transform: translate(-50%, -50%);
   color: white;
   text-align: center;
-  padding: 0 20px;
-  z-index: 2;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px 20px;
+  border-radius: 6px;
 }
 
-/* MAIN CONTENT SPACING */
-.main-content {
-  padding: 20px;
+.hero-overlay h1 {
+  font-size: 28px;   /* desktop heading */
 }
 
-/* MOBILE ADJUSTMENTS */
-@media screen and (max-width: 768px) {
+/* 📱 Mobile fix */
+@media (max-width: 768px) {
   .hero-video {
-    max-height: 40vh; /* smaller video on mobile */
+    padding-top: 50%;  /* slightly shorter video for mobile */
   }
   .hero-overlay h1 {
-    font-size: 1.5rem;
-  }
-  .hero-overlay p {
-    font-size: 1rem;
+    font-size: 16px;
   }
 }
