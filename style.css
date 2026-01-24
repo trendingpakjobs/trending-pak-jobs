@@ -241,42 +241,24 @@ footer a{
 
 }
 
+/* HERO BACKGROUND VIDEO */
 .hero-video {
   position: relative;
   width: 100%;
-  max-height: 320px;   /* makes video SMALL */
+  height: 320px;        /* Desktop size */
   overflow: hidden;
 }
 
 .hero-video video {
   width: 100%;
   height: 100%;
-  object-fit: cover;   /* keeps 16:9 nice */
+  object-fit: cover;    /* Keeps video nicely cropped */
   display: block;
 }
 
-.hero-overlay {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 10px 20px;
-  border-radius: 6px;
-}
-
-.hero-overlay h1 {
-  font-size: 22px;
-}
-
-/* 📱 Mobile fix */
+/* Mobile Responsive */
 @media (max-width: 768px) {
   .hero-video {
-    max-height: 180px;
-  }
-  .hero-overlay h1 {
-    font-size: 16px;
+    height: 180px;      /* Smaller on phones */
   }
 }
