@@ -244,18 +244,14 @@ footer a{
 .hero-video {
   position: relative;
   width: 100%;
-  height: 0;
-  padding-top: 56.25%; /* 16:9 aspect ratio */
+  max-height: 320px;   /* makes video SMALL */
   overflow: hidden;
 }
 
 .hero-video video {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;  /* keeps 16:9 ratio and prevents stretching */
+  object-fit: cover;   /* keeps 16:9 nice */
   display: block;
 }
 
@@ -272,13 +268,13 @@ footer a{
 }
 
 .hero-overlay h1 {
-  font-size: 28px;   /* desktop heading */
+  font-size: 22px;
 }
 
 /* 📱 Mobile fix */
 @media (max-width: 768px) {
   .hero-video {
-    padding-top: 50%;  /* slightly shorter video for mobile */
+    max-height: 180px;
   }
   .hero-overlay h1 {
     font-size: 16px;
