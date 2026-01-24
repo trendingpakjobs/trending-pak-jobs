@@ -241,15 +241,42 @@ footer a{
 
 }
 
-    .hero-video {
+.hero-video {
   position: relative;
   width: 100%;
-  height: 60vh;
+  max-height: 320px;   /* makes video SMALL */
   overflow: hidden;
 }
 
 .hero-video video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;   /* keeps 16:9 nice */
+  display: block;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px 20px;
+  border-radius: 6px;
+}
+
+.hero-overlay h1 {
+  font-size: 22px;
+}
+
+/* 📱 Mobile fix */
+@media (max-width: 768px) {
+  .hero-video {
+    max-height: 180px;
+  }
+  .hero-overlay h1 {
+    font-size: 16px;
+  }
 }
