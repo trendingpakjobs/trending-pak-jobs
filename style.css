@@ -241,30 +241,42 @@ footer a{
 
 }
 
-/* HERO SECTION WRAPPER FIX */
+/* ===== HERO VIDEO FIX ===== */
 .hero-video {
   position: relative;
   width: 100%;
-  height: 180px;      /* SAME size for desktop & mobile */
+  height: 180px;           /* FIXED height */
   max-width: 100%;
   overflow: hidden;
-  margin: 0 auto;
 }
 
-/* VIDEO */
+/* Video perfectly centered */
 .hero-video video {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: auto;
+  height: 100%;
   min-width: 100%;
-  min-height: 100%;
   transform: translate(-50%, -50%);
   object-fit: cover;
 }
 
-/* REMOVE ANY DESKTOP STRETCHING */
+/* ===== STOP DESKTOP STRETCH ===== */
 @media (min-width: 769px) {
+
+  body {
+    overflow-x: hidden;   /* stops layout pushing */
+  }
+
+  .navbar,
+  .slogan,
+  .about {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
   .hero-video {
-    height: 180px;
+    height: 180px;   /* force same as mobile */
   }
 }
