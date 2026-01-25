@@ -242,15 +242,15 @@ footer a{
 }
 
 .hero-video {
-  width: 100%;
-  height: 180px;        /* SAME HEIGHT EVERYWHERE FOR MOBILE */
+  width: 100%;           /* Mobile full width */
+  height: 180px;         /* Mobile height */
   overflow: hidden;
 }
 
 .hero-video video {
   width: 100%;
   height: 100%;
-  object-fit: cover;    /* keeps 16:9 crop */
+  object-fit: cover;
   display: block;
 }
 
@@ -262,7 +262,7 @@ footer a{
     overflow-x: hidden;
   }
 
-  /* Main page width control */
+  /* Center content and limit width on desktop */
   .navbar,
   .slogan,
   .hero-video,
@@ -294,13 +294,13 @@ footer a{
     width: 100%;
   }
 
-  /* Hero video proper fit */
+  /* Hero video proper fit for desktop */
   .hero-video {
-    width: 90%;                /* Reduce width to prevent over push */
-    max-width: 1000px;         /* Limit max width */
-    height: auto;              /* Height adjusts automatically */
-    aspect-ratio: 16 / 9;      /* Maintain 16:9 ratio */
-    margin: 0 auto 20px;       /* Center horizontally + margin bottom */
+    width: 100%;               /* Full width within max-width */
+    max-width: 1100px;         /* Prevent over push */
+    height: 260px;             /* Desktop height */
+    margin-left: auto;
+    margin-right: auto;
     overflow: hidden;
     position: relative;
   }
