@@ -1774,6 +1774,36 @@ jobCards.forEach(card => {
     card.querySelector(".share-telegram").href = `https://t.me/share/url?url=${encodeURIComponent(jobURL)}&text=${encodedText}`;
 });
 </script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const jobs = document.querySelectorAll(".job-card");
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  jobs.forEach(job => {
+    const text = job.innerText;
+
+    // Find "Apply Before" date from text
+    const match = text.match(/Apply Before:\s*(.*)/i);
+
+    if (match && match[1]) {
+      const deadlineText = match[1].trim();
+      const deadlineDate = new Date(deadlineText);
+      deadlineDate.setHours(0,0,0,0);
+
+      if (today > deadlineDate) {
+        job.style.display = "none";  // auto hide expired job
+      }
+    }
+
+  });
+
+});
+</script>
+
  
 </body>
   </html>
