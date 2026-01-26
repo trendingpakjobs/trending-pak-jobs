@@ -296,16 +296,18 @@ document.addEventListener("DOMContentLoaded", function () {
   jobs.forEach(job => {
     const text = job.innerText;
 
-    // Find "Apply Before" date from text
+    // Find "Apply Before" date
     const match = text.match(/Apply Before:\s*(.*)/i);
 
     if (match && match[1]) {
-      const deadlineText = match[1].trim();
-      const deadlineDate = new Date(deadlineText);
-      deadlineDate.setHours(0,0,0,0);
 
-      if (today > deadlineDate) {
-        job.style.display = "none";  // auto hide expired job
+      const deadlineText = match[1].trim();
+      const deadline = new Date(deadlineText);
+      deadline.setHours(0,0,0,0);
+
+      // If expired → hide job
+      if (today > deadline) {
+        job.style.display = "none";
       }
     }
 
