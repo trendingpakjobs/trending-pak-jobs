@@ -50,42 +50,108 @@ body{
 }
 
 
-/* Hamburger */
-.menu-toggle {
-    display: none;
-    font-size: 26px;
-    cursor: pointer;
+/* NAVBAR */
+.navbar {
+    backdrop-filter: blur(10px);
+    background: rgba(11, 93, 30, 0.85);
     color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
+.nav-left {
+    font-size: 20px;
+    font-weight: bold;
+}
 
-    .menu-toggle {
-        display: block;
-    }
 
-    .nav-right {
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background: #0a7f2e;
-        width: 220px;
-        flex-direction: column;
-        align-items: center;
-        display: none;
-        padding: 15px 0;
-        border-radius: 0 0 0 10px;
-    }
+/* HAMBURGER */
+.hamburger {
+    width: 30px;
+    height: 22px;
+    position: relative;
+    cursor: pointer;
+}
 
-    .nav-right a {
-        display: block;
-        padding: 10px;
-    }
+.hamburger span {
+    background: white;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    left: 0;
+    transition: 0.3s;
+}
 
-    .nav-right.active {
-        display: flex;
-    }
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 9px; }
+.hamburger span:nth-child(3) { bottom: 0; }
+
+
+/* CROSS ANIMATION */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 9px;
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    bottom: 9px;
+}
+
+
+/* OVERLAY */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    z-index: 998;
+}
+
+
+/* SIDE MENU GLASS */
+.side-menu {
+    position: fixed;
+    right: -270px;
+    top: 0;
+    width: 270px;
+    height: 100%;
+    backdrop-filter: blur(15px);
+    background: rgba(11, 93, 30, 0.9);
+    padding-top: 60px;
+    transition: 0.4s ease;
+    z-index: 999;
+}
+
+.side-menu a {
+    display: block;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    font-size: 17px;
+}
+
+.side-menu a:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.logo {
+    width: 120px;
+    display: block;
+    margin: 30px auto;
 }
 
 
