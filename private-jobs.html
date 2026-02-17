@@ -36,15 +36,36 @@
 
 <!-- NAVBAR -->
 <div class="navbar">
+
     <div class="nav-left">Trending Pak Jobs</div>
-    <div class="nav-right">
-        <a href="index.html">All Jobs</a>
-        <a href="government-jobs.html">Government</a>
-        <a href="private-jobs.html">Private</a>
-        <a href="internships.html">Internships</a>
-        <a href="online-jobs.html">Online Jobs</a>
-        <img src="logo.png" class="logo">
+
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
     </div>
+
+</div>
+
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="closeMenu()"></div>
+
+<!-- SIDE MENU -->
+<div class="side-menu" id="sideMenu">
+
+    <a href="index.html" onclick="closeMenu()">All Jobs</a>
+    <a href="government-jobs.html" onclick="closeMenu()">Government</a>
+    <a href="private-jobs.html" onclick="closeMenu()">Private</a>
+    <a href="internships.html" onclick="closeMenu()">Internships</a>
+    <a href="online-jobs.html" onclick="closeMenu()">Online Jobs</a>
+
+    <hr>
+
+    <a href="disclaimer.html" onclick="closeMenu()">Disclaimer</a>
+    <a href="privacy-policy.html" onclick="closeMenu()">Privacy Policy</a>
+
+    <img src="logo.png" class="logo">
+
 </div>
 
 <!-- SLOGAN -->
@@ -1620,6 +1641,33 @@ Apply Now
 </footer>
 
 <!-- FILTER SCRIPT -->
+<script>
+
+function toggleMenu() {
+
+    let menu = document.getElementById("sideMenu");
+    let overlay = document.getElementById("overlay");
+    let burger = document.getElementById("hamburger");
+
+    menu.style.right = "0";
+    overlay.style.display = "block";
+    burger.classList.add("active");
+}
+
+function closeMenu() {
+
+    let menu = document.getElementById("sideMenu");
+    let overlay = document.getElementById("overlay");
+    let burger = document.getElementById("hamburger");
+
+    menu.style.right = "-270px";
+    overlay.style.display = "none";
+    burger.classList.remove("active");
+}
+
+</script>
+
+    
 <script>
 const search = document.getElementById("search");
 const city = document.getElementById("city");
