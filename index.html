@@ -2791,6 +2791,35 @@ search.addEventListener("keyup", filterJobs);
 city.addEventListener("change", filterJobs);
 </script>
 
+
+<script>
+// Function to check if element is in viewport
+function isInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 50
+  );
+}
+
+// Animate cards on scroll
+const cards = document.querySelectorAll('.job-card');
+
+function animateCards() {
+  cards.forEach(card => {
+    if (isInViewport(card)) {
+      card.classList.add('visible');
+    }
+  });
+}
+
+// Initial check
+animateCards();
+
+// On scroll
+window.addEventListener('scroll', animateCards);
+</script>
+ 
+
 <script>
 const jobCards = document.querySelectorAll(".job-card");
 
