@@ -2723,7 +2723,24 @@ Apply Now
 </footer>
 
 <!-- FILTER + SEARCH SCRIPT -->
-<script>
+ <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const toggle = document.getElementById("menu-toggle");
+    const nav = document.getElementById("nav-right");
+
+    if (toggle && nav) {
+        toggle.addEventListener("click", function () {
+            nav.classList.toggle("active");
+        });
+    }
+
+});
+</script>
+
+ 
+ 
+ <script>
 const search = document.getElementById("search");
 const city = document.getElementById("city");
 const jobs = document.querySelectorAll(".job-card");
@@ -2796,14 +2813,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 </script>
 
-<script>
-const toggle = document.getElementById("menu-toggle");
-const nav = document.getElementById("nav-right");
 
-toggle.addEventListener("click", () => {
-    nav.classList.toggle("active");
-});
-</script>
  
  
 </body>
