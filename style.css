@@ -11,6 +11,44 @@ body{
 }
 
 
+/* ===== NAVBAR ===== */
+.navbar{
+    background:#0b5d1e; /* Pakistan green */
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 20px;
+    flex-wrap:wrap;
+}
+
+.nav-left{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.nav-right a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.nav-right a:hover{
+    text-decoration:underline;
+}
+
+.logo{
+    height:40px;
+    margin-left:15px;
+}
+
 
 /* Hamburger */
 .menu-toggle {
