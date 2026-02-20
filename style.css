@@ -532,3 +532,41 @@ transition:all 0.8s ease;
 opacity:1;
 transform:translateX(0);
 }
+
+
+
+.explore-container{
+  display:flex;
+  justify-content:center;
+  margin:60px 0;
+}
+
+.explore-btn{
+  background:#0f9d58;
+  color:white;
+  padding:20px 60px;
+  border:none;
+  border-radius:40px;
+  font-size:22px;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  transition:0.3s;
+}
+
+.explore-btn:hover{
+  transform:scale(1.05);
+}
+
+.explore-menu{
+  display:none;
+  text-align:center;
+  margin-top:20px;
+}
+
+.explore-menu a{
+  display:block;
+  padding:12px;
+  text-decoration:none;
+  color:#333;
+  font-weight:600;
+}
