@@ -128,37 +128,18 @@ We collect jobs from reliable sources and provide direct apply links.
 
 
 
-<!-- CATEGORIES -->
-<section class="section">
-
-<h2 class="slide-left">Browse Job Categories</h2>
-
-<div class="category-grid">
-
-<a href="government-jobs.html" class="cat-card slide-left">
-<h3>Government Jobs</h3>
-<p>Latest federal and provincial government opportunities.</p>
-</a>
-
-<a href="private-jobs.html" class="cat-card slide-left">
-<h3>Private Jobs</h3>
-<p>Jobs from companies across Pakistan.</p>
-</a>
-
-<a href="internships.html" class="cat-card slide-left">
-<h3>Internships</h3>
-<p>Internship programs for students and fresh graduates.</p>
-</a>
-
-<a href="online-jobs.html" class="cat-card slide-left">
-<h3>Online Jobs</h3>
-<p>Remote and work-from-home opportunities.</p>
-</a>
-
+<div class="explore-container">
+  <button class="explore-btn" onclick="toggleMenu()">
+    Explore More Jobs
+  </button>
 </div>
 
-</section>
-
+<div class="explore-menu" id="menu">
+  <a href="government-jobs.html">Government Jobs</a>
+  <a href="private-jobs.html">Private Jobs</a>
+  <a href="bank-jobs.html">Bank Jobs</a>
+  <a href="internships.html">Internships</a>
+</div>
 
 
 <!-- WHY CHOOSE -->
@@ -315,5 +296,19 @@ counters.forEach(counter => {
 });
 
 </script>
+<script>
+function toggleMenu(){
+  let menu = document.getElementById("menu");
+  menu.style.display =
+    menu.style.display === "block" ? "none" : "block";
+}
+</script>
 
+
+ 
 </body>
+
+
+
+
+</html>
