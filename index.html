@@ -45,23 +45,24 @@
   </video>
 </div>
 
-<!-- STATS -->
-<section class="stats-section">
-  <div class="stats">
-    <div class="stat-box">
-      <h2 class="counter" data-target="500+">0</h2>
-      <p>Jobs Posted</p>
+<!-- STATS HEADING -->
+<h2 class="section-heading">Stats</h2>
+<div class="stats-container">
+    <div class="stat-card">
+        <h2 class="counter" data-target="500">0</h2>
+        <p>Jobs Posted</p>
     </div>
-    <div class="stat-box">
-      <h2 class="counter" data-target="50+">0</h2>
-      <p>Companies</p>
+    <div class="stat-card">
+        <h2 class="counter" data-target="50">0</h2>
+        <p>Companies</p>
     </div>
-    <div class="stat-box">
-      <h2 class="counter" data-target="4">0</h2>
-      <p>Categories</p>
+</div>
+<div class="stats-container">
+    <div class="stat-card">
+        <h2 class="counter" data-target="4">0</h2>
+        <p>Categories</p>
     </div>
-  </div>
-</section>
+</div>
 
 <!-- ABOUT SECTION -->
 <section class="section about-card">
@@ -134,22 +135,27 @@ function closeMenu() {
   burger.classList.remove("active");
 }
 
-// COUNTER ANIMATION
-const counters = document.querySelectorAll('.counter');
-counters.forEach(counter => {
-    const updateCounter = () => {
-        const target = +counter.getAttribute('data-target');
-        const c = +counter.innerText;
-        const increment = target/100;
-        if(c < target){
-            counter.innerText = Math.ceil(c+increment);
-            setTimeout(updateCounter, 20);
-        } else {
-            counter.innerText = target;
-        }
-    };
+
+// COUNTER
+const counters=document.querySelectorAll('.counter');
+counters.forEach(counter=>{
+    const updateCounter=()=>{
+        const target=+counter.getAttribute('data-target');
+        const c=+counter.innerText;
+        const increment=target/100;
+        if(c<target){
+            counter.innerText=Math.ceil(c+increment);
+            setTimeout(updateCounter,20);
+        }else{counter.innerText=target;}
+    }
     updateCounter();
 });
+
+
+
+
+    
+
 
 // JOB CARD ANIMATION
 const cards = document.querySelectorAll('.job-card');
@@ -174,28 +180,7 @@ window.addEventListener('scroll', animateAbout);
 animateAbout();
 </script>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const counters = document.querySelectorAll('.counter');
-  counters.forEach(counter => {
-    counter.innerText = '0';
-    const target = +counter.dataset.target;
-    let current = 0;
-    const increment = Math.ceil(target / 100);
 
-    const update = () => {
-      current += increment;
-      if (current < target) {
-        counter.innerText = current;
-        requestAnimationFrame(update);
-      } else {
-        counter.innerText = target + '+';
-      }
-    };
-    update();
-  });
-});
-</script>
     
 
 </body>
