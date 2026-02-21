@@ -270,20 +270,7 @@ footer a {
 }
 
 
-/* ===== MOBILE ===== */
 
-@media (max-width: 768px) {
-
-    .hero-video {
-        height: 180px;
-    }
-
-    .job-card {
-        width: 95%;
-        margin: auto;
-    }
-
-}
 
 
 /* JOB CARD ANIMATION */
