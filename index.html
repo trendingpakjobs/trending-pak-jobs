@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trending Pak Jobs - Home</title>
-<meta name="description" content="Trending Pak Jobs provides latest government, private, internships and online jobs in Pakistan with city wise search and direct apply links.">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
@@ -101,11 +100,9 @@ body{
 /* HERO VIDEO */
 .hero-video{
     width:100%;
-    max-width:1100px;
-    height:260px;
-    margin:40px auto 20px auto;
-    position:relative;
+    height:calc(100vh - 70px); /* full height minus navbar */
     overflow:hidden;
+    position:relative;
 }
 .hero-video video{
     width:100%;
@@ -129,14 +126,27 @@ body{
     text-align:center;
 }
 
+/* ===== SECTION HEADINGS ===== */
+.section-heading{
+    text-align:center;
+    color:#0b5d1e;
+    font-size:28px;
+    font-weight:700;
+    margin:50px 0 20px 0;
+    opacity:0;
+    transform:translateY(-30px);
+    transition:all 0.8s ease;
+}
+.section-heading.show{ opacity:1; transform:translateY(0); }
+
 /* ===== STATS ===== */
 .stats-container{
     display:flex;
     justify-content:center;
-    gap:30px;
     flex-wrap:wrap;
-    margin:30px auto;
     max-width:1100px;
+    margin:20px auto;
+    gap:20px;
 }
 .stat-card{
     background:white;
@@ -144,10 +154,9 @@ body{
     border-radius:12px;
     box-shadow:0 5px 20px rgba(0,0,0,0.12);
     text-align:center;
-    min-width:150px;
-    transition:0.3s;
+    flex:1 1 200px;
+    min-width:180px;
 }
-.stat-card:hover{ transform:translateY(-5px); }
 .stat-card h2{ font-size:28px; color:#0b5d1e; margin-bottom:5px; }
 .stat-card p{ font-weight:600; }
 
@@ -160,11 +169,6 @@ body{
     border-radius:12px;
     box-shadow:0 5px 25px rgba(0,0,0,0.1);
 }
-.about-card h2{
-    text-align:center;
-    color:#0b5d1e;
-    margin-bottom:20px;
-}
 .about-card p{
     line-height:1.7;
     text-align:center;
@@ -173,30 +177,36 @@ body{
 /* ===== FEATURED JOBS ===== */
 .featured-jobs{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:20px;
-    max-width:1100px;
+    grid-template-columns:1fr; /* 1 card per row desktop */
+    gap:30px;
+    max-width:900px;
     margin:40px auto;
 }
 .job-card{
     background:white;
     padding:20px;
     border-radius:12px;
-    box-shadow:0 5px 25px rgba(0,0,0,0.1);
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+    border:2px solid transparent;
+    transition:all 0.4s ease;
     opacity:0;
     transform:translateX(-50px);
-    transition:all 0.6s ease-out;
 }
 .job-card.visible{
     opacity:1;
     transform:translateX(0);
 }
-.job-card h3{ color:#0b5d1e; margin-bottom:8px; }
+.job-card:hover{
+    box-shadow:0 5px 25px rgba(0,0,0,0.2);
+    border-color:#0b5d1e;
+    box-shadow: 0 0 15px #0b5d1e;
+}
+.job-card h3{ color:#0b5d1e; margin-bottom:10px; font-weight:700; }
 .job-card p{ margin-bottom:8px; }
 .apply-btn{
     display:block;
     text-align:center;
-    background:#0b5d1e;
+    background:black;
     color:white;
     padding:10px;
     border-radius:6px;
@@ -220,14 +230,6 @@ body{
 }
 .explore-btn:hover{ transform:scale(1.08); }
 
-/* ===== ANIMATIONS ===== */
-.slide-down{
-    opacity:0;
-    transform:translateY(-30px);
-    transition:all 0.8s ease;
-}
-.slide-down.show{ opacity:1; transform:translateY(0); }
-
 /* ===== FOOTER ===== */
 footer{
     background:#0b5d1e;
@@ -240,8 +242,9 @@ footer{
 footer a{ color:white; text-decoration:underline; margin:0 5px; }
 
 @media(max-width:768px){
-    .hero-video{ height:180px; }
+    .hero-video{ height:50vh; }
     .stats-container{ flex-direction:column; align-items:center; }
+    .featured-jobs{ grid-template-columns:1fr; max-width:95%; margin:20px auto; }
 }
 </style>
 </head>
@@ -281,7 +284,8 @@ footer a{ color:white; text-decoration:underline; margin:0 5px; }
     </div>
 </div>
 
-<!-- STATS -->
+<!-- STATS HEADING -->
+<h2 class="section-heading">Stats</h2>
 <div class="stats-container">
     <div class="stat-card">
         <h2 class="counter" data-target="500">0</h2>
@@ -291,21 +295,24 @@ footer a{ color:white; text-decoration:underline; margin:0 5px; }
         <h2 class="counter" data-target="50">0</h2>
         <p>Companies</p>
     </div>
+</div>
+<div class="stats-container">
     <div class="stat-card">
         <h2 class="counter" data-target="4">0</h2>
         <p>Categories</p>
     </div>
 </div>
 
-<!-- ABOUT -->
-<div class="about-card slide-down">
-    <h2>About Trending Pak Jobs</h2>
+<!-- ABOUT HEADING -->
+<h2 class="section-heading">About Us</h2>
+<div class="about-card">
     <p>Trending Pak Jobs is a trusted platform designed to help job seekers
     find the latest opportunities across Pakistan quickly and easily.
     We collect jobs from reliable sources and provide direct apply links.</p>
 </div>
 
-<!-- FEATURED JOBS -->
+<!-- FEATURED JOBS HEADING -->
+<h2 class="section-heading">Featured Jobs</h2>
 <div class="featured-jobs">
     <div class="job-card">
         <h3>Marketing Executive</h3>
@@ -337,56 +344,60 @@ footer a{ color:white; text-decoration:underline; margin:0 5px; }
 <a href="disclaimer.html">Disclaimer</a>
 </footer>
 
-<!-- ===== JS ===== -->
 <script>
+// MENU TOGGLE
 function toggleMenu(){
-    let menu = document.getElementById("sideMenu");
-    let overlay = document.getElementById("overlay");
-    let burger = document.getElementById("hamburger");
-    menu.style.right = "0";
-    overlay.style.display = "block";
+    let menu=document.getElementById("sideMenu");
+    let overlay=document.getElementById("overlay");
+    let burger=document.getElementById("hamburger");
+    menu.style.right="0";
+    overlay.style.display="block";
     burger.classList.add("active");
 }
 function closeMenu(){
-    let menu = document.getElementById("sideMenu");
-    let overlay = document.getElementById("overlay");
-    let burger = document.getElementById("hamburger");
-    menu.style.right = "-270px";
-    overlay.style.display = "none";
+    let menu=document.getElementById("sideMenu");
+    let overlay=document.getElementById("overlay");
+    let burger=document.getElementById("hamburger");
+    menu.style.right="-270px";
+    overlay.style.display="none";
     burger.classList.remove("active");
 }
 
 // COUNTER
-const counters = document.querySelectorAll('.counter');
+const counters=document.querySelectorAll('.counter');
 counters.forEach(counter=>{
-    const updateCounter = ()=>{
-        const target = +counter.getAttribute('data-target');
-        const c = +counter.innerText;
-        const increment = target/100;
-        if(c < target){
-            counter.innerText = Math.ceil(c+increment);
+    const updateCounter=()=>{
+        const target=+counter.getAttribute('data-target');
+        const c=+counter.innerText;
+        const increment=target/100;
+        if(c<target){
+            counter.innerText=Math.ceil(c+increment);
             setTimeout(updateCounter,20);
-        } else { counter.innerText = target; }
+        }else{counter.innerText=target;}
     }
     updateCounter();
 });
 
-// ANIMATE CARDS ON SCROLL
-const jobCards = document.querySelectorAll('.job-card');
-const aboutCard = document.querySelector('.about-card');
+// ANIMATE CARDS AND HEADINGS
+const jobCards=document.querySelectorAll('.job-card');
+const sectionHeadings=document.querySelectorAll('.section-heading');
+const aboutCard=document.querySelector('.about-card');
 function isInViewport(el){
-    const rect = el.getBoundingClientRect();
+    const rect=el.getBoundingClientRect();
     return (rect.top <= (window.innerHeight || document.documentElement.clientHeight)-50);
 }
-function animateCards(){
+function animateElements(){
     jobCards.forEach(card=>{
         if(isInViewport(card)){ card.classList.add('visible'); }
     });
+    sectionHeadings.forEach(head=>{
+        if(isInViewport(head)){ head.classList.add('show'); }
+    });
     if(isInViewport(aboutCard)){ aboutCard.classList.add('show'); }
 }
-window.addEventListener('scroll',animateCards);
-animateCards();
+window.addEventListener('scroll',animateElements);
+animateElements();
 </script>
 
 </body>
-  </html>
+</html>
