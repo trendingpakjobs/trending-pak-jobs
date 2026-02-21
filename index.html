@@ -4,249 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Trending Pak Jobs - Home</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-/* ===== GENERAL ===== */
-body{
-    margin:0;
-    font-family: 'Poppins', sans-serif;
-    background:#f4f7f5;
-}
-
-/* ===== NAVBAR ===== */
-.navbar{
-    backdrop-filter: blur(10px);
-    background: rgba(11,93,30,0.85);
-    color:white;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 20px;
-    position:sticky;
-    top:0;
-    z-index:1000;
-}
-.nav-left{
-    font-size:22px;
-    font-weight:700;
-}
-
-/* HAMBURGER */
-.hamburger{
-    width:30px;
-    height:22px;
-    position:relative;
-    cursor:pointer;
-}
-.hamburger span{
-    background:white;
-    position:absolute;
-    height:3px;
-    width:100%;
-    left:0;
-    transition:0.3s;
-}
-.hamburger span:nth-child(1){ top:0; }
-.hamburger span:nth-child(2){ top:9px; }
-.hamburger span:nth-child(3){ bottom:0; }
-
-/* CROSS ANIMATION */
-.hamburger.active span:nth-child(1){
-    transform:rotate(45deg);
-    top:9px;
-}
-.hamburger.active span:nth-child(2){ opacity:0; }
-.hamburger.active span:nth-child(3){
-    transform:rotate(-45deg);
-    bottom:9px;
-}
-
-/* OVERLAY */
-.overlay{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.4);
-    display:none;
-    z-index:998;
-}
-
-/* SIDE MENU */
-.side-menu{
-    position:fixed;
-    right:-270px;
-    top:0;
-    width:270px;
-    height:100%;
-    backdrop-filter:blur(15px);
-    background: rgba(11,93,30,0.9);
-    padding-top:60px;
-    transition:0.4s ease;
-    z-index:999;
-}
-.side-menu a{
-    display:block;
-    color:white;
-    padding:15px 25px;
-    text-decoration:none;
-    border-bottom:1px solid rgba(255,255,255,0.2);
-    font-size:17px;
-}
-.side-menu a:hover{ background:rgba(255,255,255,0.1); }
-
-/* HERO VIDEO */
-.hero-video{
-    width:100%;
-    height:calc(100vh - 70px); /* full height minus navbar */
-    overflow:hidden;
-    position:relative;
-}
-.hero-video video{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    display:block;
-    position:absolute;
-    top:0;
-    left:0;
-}
-.hero-content{
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%);
-    background:rgba(0,0,0,0.45);
-    backdrop-filter:blur(8px);
-    padding:30px;
-    border-radius:12px;
-    color:white;
-    text-align:center;
-}
-
-/* ===== SECTION HEADINGS ===== */
-.section-heading{
-    text-align:center;
-    color:#0b5d1e;
-    font-size:28px;
-    font-weight:700;
-    margin:50px 0 20px 0;
-    opacity:0;
-    transform:translateY(-30px);
-    transition:all 0.8s ease;
-}
-.section-heading.show{ opacity:1; transform:translateY(0); }
-
-/* ===== STATS ===== */
-.stats-container{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    max-width:1100px;
-    margin:20px auto;
-    gap:20px;
-}
-.stat-card{
-    background:white;
-    padding:20px 25px;
-    border-radius:12px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.12);
-    text-align:center;
-    flex:1 1 200px;
-    min-width:180px;
-}
-.stat-card h2{ font-size:28px; color:#0b5d1e; margin-bottom:5px; }
-.stat-card p{ font-weight:600; }
-
-/* ===== ABOUT ===== */
-.about-card{
-    max-width:900px;
-    margin:40px auto;
-    padding:25px;
-    background:white;
-    border-radius:12px;
-    box-shadow:0 5px 25px rgba(0,0,0,0.1);
-}
-.about-card p{
-    line-height:1.7;
-    text-align:center;
-}
-
-/* ===== FEATURED JOBS ===== */
-.featured-jobs{
-    display:grid;
-    grid-template-columns:1fr; /* 1 card per row desktop */
-    gap:30px;
-    max-width:900px;
-    margin:40px auto;
-}
-.job-card{
-    background:white;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 5px 20px rgba(0,0,0,0.1);
-    border:2px solid transparent;
-    transition:all 0.4s ease;
-    opacity:0;
-    transform:translateX(-50px);
-}
-.job-card.visible{
-    opacity:1;
-    transform:translateX(0);
-}
-.job-card:hover{
-    box-shadow:0 5px 25px rgba(0,0,0,0.2);
-    border-color:#0b5d1e;
-    box-shadow: 0 0 15px #0b5d1e;
-}
-.job-card h3{ color:#0b5d1e; margin-bottom:10px; font-weight:700; }
-.job-card p{ margin-bottom:8px; }
-.apply-btn{
-    display:block;
-    text-align:center;
-    background:black;
-    color:white;
-    padding:10px;
-    border-radius:6px;
-    text-decoration:none;
-}
-
-/* ===== FLOATING EXPLORE BUTTON ===== */
-.explore-btn{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#0b5d1e;
-    color:white;
-    padding:16px 28px;
-    border-radius:30px;
-    font-weight:bold;
-    cursor:pointer;
-    box-shadow:0 5px 20px rgba(0,0,0,0.35);
-    z-index:999;
-    transition:0.3s;
-}
-.explore-btn:hover{ transform:scale(1.08); }
-
-/* ===== FOOTER ===== */
-footer{
-    background:#0b5d1e;
-    color:white;
-    text-align:center;
-    padding:15px;
-    margin-top:40px;
-    font-size:14px;
-}
-footer a{ color:white; text-decoration:underline; margin:0 5px; }
-
-@media(max-width:768px){
-    .hero-video{ height:50vh; }
-    .stats-container{ flex-direction:column; align-items:center; }
-    .featured-jobs{ grid-template-columns:1fr; max-width:95%; margin:20px auto; }
-}
-</style>
+<meta name="description" content="Trending Pak Jobs provides latest government, private, internships and online jobs in Pakistan with city wise search and direct apply links.">
+<link rel="stylesheet" href="style2.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"></script>
 </head>
 <body>
 
@@ -260,8 +20,10 @@ footer a{ color:white; text-decoration:underline; margin:0 5px; }
     </div>
 </div>
 
+<!-- OVERLAY -->
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 
+<!-- SIDE MENU -->
 <div class="side-menu" id="sideMenu">
     <a href="index.html" onclick="closeMenu()">All Jobs</a>
     <a href="government-jobs.html" onclick="closeMenu()">Government</a>
@@ -273,66 +35,64 @@ footer a{ color:white; text-decoration:underline; margin:0 5px; }
     <a href="privacy-policy.html" onclick="closeMenu()">Privacy Policy</a>
 </div>
 
+<!-- SLOGAN -->
+<div class="slogan">Find Today Opportunities, Build Tomorrow Success</div>
+
 <!-- HERO VIDEO -->
 <div class="hero-video">
-    <video autoplay muted loop playsinline>
-        <source src="hero-jobs-background.mp4" type="video/mp4">
-    </video>
-    <div class="hero-content">
-        <h1>Find Your Dream Job in Pakistan</h1>
-        <p>Latest Government, Private, Internships & Online Jobs — Updated Daily</p>
-    </div>
+  <video autoplay muted loop playsinline>
+    <source src="hero-jobs-background.mp4" type="video/mp4">
+  </video>
 </div>
 
-<!-- STATS HEADING -->
-<h2 class="section-heading">Stats</h2>
-<div class="stats-container">
-    <div class="stat-card">
-        <h2 class="counter" data-target="500">0</h2>
-        <p>Jobs Posted</p>
-    </div>
-    <div class="stat-card">
-        <h2 class="counter" data-target="50">0</h2>
-        <p>Companies</p>
-    </div>
-</div>
-<div class="stats-container">
-    <div class="stat-card">
-        <h2 class="counter" data-target="4">0</h2>
-        <p>Categories</p>
-    </div>
-</div>
+<!-- STATS -->
+<section class="section stats">
+  <div class="stat-box"><h2 class="counter" data-target="500">0</h2><p>Jobs Posted</p></div>
+  <div class="stat-box"><h2 class="counter" data-target="50">0</h2><p>Companies</p></div>
+  <div class="stat-box"><h2 class="counter" data-target="4">0</h2><p>Categories</p></div>
+</section>
 
-<!-- ABOUT HEADING -->
-<h2 class="section-heading">About Us</h2>
-<div class="about-card">
-    <p>Trending Pak Jobs is a trusted platform designed to help job seekers
-    find the latest opportunities across Pakistan quickly and easily.
-    We collect jobs from reliable sources and provide direct apply links.</p>
-</div>
+<!-- ABOUT SECTION -->
+<section class="section about-card">
+  <div class="about">
+    <b>Who we are:</b><br>
+    Trending Pak Jobs is your trusted platform to find the latest job opportunities in Pakistan.<br><br>
 
-<!-- FEATURED JOBS HEADING -->
-<h2 class="section-heading">Featured Jobs</h2>
-<div class="featured-jobs">
-    <div class="job-card">
-        <h3>Marketing Executive</h3>
-        <p>City: Lahore</p>
-        <p>Salary: 45,000 PKR</p>
-        <a href="#" class="apply-btn">Apply Now</a>
+    <b>What we provide:</b>
+    <ul>
+      <li>Daily updates of government and private jobs.</li>
+      <li>Internships and online/work-from-home opportunities.</li>
+      <li>Direct application links so you can apply quickly.</li>
+      <li>Easy search and filter by city to find the jobs that match you.</li>
+    </ul>
+
+    Our goal is to make job searching fast, simple, and accessible for everyone.
+  </div>
+</section>
+
+<!-- FEATURED JOBS -->
+<section class="section featured-jobs-container">
+  <div class="featured-jobs">
+    <div class="job-card" data-city="Lahore">
+      <h3>Marketing Executive</h3>
+      <p>City: Lahore</p>
+      <p>Salary: 45,000 PKR</p>
+      <a href="#" class="apply-btn">Apply Now</a>
     </div>
-    <div class="job-card">
-        <h3>Office Assistant</h3>
-        <p>City: Islamabad</p>
-        <p>Salary: 35,000 PKR</p>
-        <a href="#" class="apply-btn">Apply Now</a>
+    <div class="job-card" data-city="Islamabad">
+      <h3>Office Assistant</h3>
+      <p>City: Islamabad</p>
+      <p>Salary: 35,000 PKR</p>
+      <a href="#" class="apply-btn">Apply Now</a>
     </div>
-    <div class="job-card">
-        <h3>Graphic Designer</h3>
-        <p>City: Karachi</p>
-        <p>Salary: 60,000 PKR</p>
-        <a href="#" class="apply-btn">Apply Now</a>
+    <div class="job-card" data-city="Karachi">
+      <h3>Graphic Designer</h3>
+      <p>City: Karachi</p>
+      <p>Salary: 60,000 PKR</p>
+      <a href="#" class="apply-btn">Apply Now</a>
     </div>
-</div>
+  </div>
+</section>
 
 <!-- FLOATING EXPLORE BUTTON -->
 <div class="explore-btn" onclick="toggleMenu()">Explore</div>
@@ -344,59 +104,63 @@ footer a{ color:white; text-decoration:underline; margin:0 5px; }
 <a href="disclaimer.html">Disclaimer</a>
 </footer>
 
+<!-- SCRIPTS -->
 <script>
-// MENU TOGGLE
-function toggleMenu(){
-    let menu=document.getElementById("sideMenu");
-    let overlay=document.getElementById("overlay");
-    let burger=document.getElementById("hamburger");
-    menu.style.right="0";
-    overlay.style.display="block";
-    burger.classList.add("active");
+function toggleMenu() {
+  let menu = document.getElementById("sideMenu");
+  let overlay = document.getElementById("overlay");
+  let burger = document.getElementById("hamburger");
+  menu.style.right = "0";
+  overlay.style.display = "block";
+  burger.classList.add("active");
 }
-function closeMenu(){
-    let menu=document.getElementById("sideMenu");
-    let overlay=document.getElementById("overlay");
-    let burger=document.getElementById("hamburger");
-    menu.style.right="-270px";
-    overlay.style.display="none";
-    burger.classList.remove("active");
+function closeMenu() {
+  let menu = document.getElementById("sideMenu");
+  let overlay = document.getElementById("overlay");
+  let burger = document.getElementById("hamburger");
+  menu.style.right = "-270px";
+  overlay.style.display = "none";
+  burger.classList.remove("active");
 }
 
-// COUNTER
-const counters=document.querySelectorAll('.counter');
-counters.forEach(counter=>{
-    const updateCounter=()=>{
-        const target=+counter.getAttribute('data-target');
-        const c=+counter.innerText;
-        const increment=target/100;
-        if(c<target){
-            counter.innerText=Math.ceil(c+increment);
-            setTimeout(updateCounter,20);
-        }else{counter.innerText=target;}
-    }
+// COUNTER ANIMATION
+const counters = document.querySelectorAll('.counter');
+counters.forEach(counter => {
+    const updateCounter = () => {
+        const target = +counter.getAttribute('data-target');
+        const c = +counter.innerText;
+        const increment = target/100;
+        if(c < target){
+            counter.innerText = Math.ceil(c+increment);
+            setTimeout(updateCounter, 20);
+        } else {
+            counter.innerText = target;
+        }
+    };
     updateCounter();
 });
 
-// ANIMATE CARDS AND HEADINGS
-const jobCards=document.querySelectorAll('.job-card');
-const sectionHeadings=document.querySelectorAll('.section-heading');
-const aboutCard=document.querySelector('.about-card');
-function isInViewport(el){
-    const rect=el.getBoundingClientRect();
-    return (rect.top <= (window.innerHeight || document.documentElement.clientHeight)-50);
+// JOB CARD ANIMATION
+const cards = document.querySelectorAll('.job-card');
+function animateCards() {
+  cards.forEach(card => {
+    if(card.getBoundingClientRect().top <= window.innerHeight - 50){
+      card.classList.add('visible');
+    }
+  });
 }
-function animateElements(){
-    jobCards.forEach(card=>{
-        if(isInViewport(card)){ card.classList.add('visible'); }
-    });
-    sectionHeadings.forEach(head=>{
-        if(isInViewport(head)){ head.classList.add('show'); }
-    });
-    if(isInViewport(aboutCard)){ aboutCard.classList.add('show'); }
+window.addEventListener('scroll', animateCards);
+animateCards();
+
+// ABOUT ANIMATION
+const aboutCard = document.querySelector('.about-card');
+function animateAbout() {
+  if(aboutCard.getBoundingClientRect().top <= window.innerHeight - 50){
+    aboutCard.classList.add('show');
+  }
 }
-window.addEventListener('scroll',animateElements);
-animateElements();
+window.addEventListener('scroll', animateAbout);
+animateAbout();
 </script>
 
 </body>
