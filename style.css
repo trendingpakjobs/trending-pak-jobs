@@ -1,447 +1,170 @@
-‎/* ===== GENERAL ===== */
-‎*{
-‎    box-sizing:border-box;
-‎    font-family: Arial, Helvetica, sans-serif;
-‎    margin:0;
-‎    padding:0;
-‎}
-‎
-‎body{
-‎    background:#f4f7f5;
-‎}
-‎
-‎
-‎/* ===== NAVBAR ===== */
-‎.navbar{
-‎    background:#0b5d1e; /* Pakistan green */
-‎    color:white;
-‎    display:flex;
-‎    align-items:center;
-‎    justify-content:space-between;
-‎    padding:12px 20px;
-‎    flex-wrap:wrap;
-‎}
-‎
-‎.nav-left{
-‎    font-size:20px;
-‎    font-weight:bold;
-‎}
-‎
-‎.nav-right{
-‎    display:flex;
-‎    align-items:center;
-‎    gap:20px;
-‎    flex-wrap:wrap;
-‎}
-‎
-‎.nav-right a{
-‎    color:white;
-‎    text-decoration:none;
-‎    font-weight:bold;
-‎}
-‎
-‎.nav-right a:hover{
-‎    text-decoration:underline;
-‎}
-‎
-‎.logo{
-‎    height:40px;
-‎    margin-left:15px;
-‎}
-‎
-‎
-‎/* NAVBAR */
-‎.navbar {
-‎    backdrop-filter: blur(10px);
-‎    background: rgba(11, 93, 30, 0.85);
-‎    color: white;
-‎    display: flex;
-‎    justify-content: space-between;
-‎    align-items: center;
-‎    padding: 15px 20px;
-‎    position: sticky;
-‎    top: 0;
-‎    z-index: 1000;
-‎}
-‎
-‎.nav-left {
-‎    font-size: 20px;
-‎    font-weight: bold;
-‎}
-‎
-‎
-‎/* HAMBURGER */
-‎.hamburger {
-‎    width: 30px;
-‎    height: 22px;
-‎    position: relative;
-‎    cursor: pointer;
-‎}
-‎
-‎.hamburger span {
-‎    background: white;
-‎    position: absolute;
-‎    height: 3px;
-‎    width: 100%;
-‎    left: 0;
-‎    transition: 0.3s;
-‎}
-‎
-‎.hamburger span:nth-child(1) { top: 0; }
-‎.hamburger span:nth-child(2) { top: 9px; }
-‎.hamburger span:nth-child(3) { bottom: 0; }
-‎
-‎
-‎/* CROSS ANIMATION */
-‎.hamburger.active span:nth-child(1) {
-‎    transform: rotate(45deg);
-‎    top: 9px;
-‎}
-‎
-‎.hamburger.active span:nth-child(2) {
-‎    opacity: 0;
-‎}
-‎
-‎.hamburger.active span:nth-child(3) {
-‎    transform: rotate(-45deg);
-‎    bottom: 9px;
-‎}
-‎
-‎
-‎/* OVERLAY */
-‎.overlay {
-‎    position: fixed;
-‎    top: 0;
-‎    left: 0;
-‎    width: 100%;
-‎    height: 100%;
-‎    background: rgba(0,0,0,0.4);
-‎    display: none;
-‎    z-index: 998;
-‎}
-‎
-‎
-‎/* SIDE MENU GLASS */
-‎.side-menu {
-‎    position: fixed;
-‎    right: -270px;
-‎    top: 0;
-‎    width: 270px;
-‎    height: 100%;
-‎    backdrop-filter: blur(15px);
-‎    background: rgba(11, 93, 30, 0.9);
-‎    padding-top: 60px;
-‎    transition: 0.4s ease;
-‎    z-index: 999;
-‎}
-‎
-‎.side-menu a {
-‎    display: block;
-‎    color: white;
-‎    padding: 15px 25px;
-‎    text-decoration: none;
-‎    border-bottom: 1px solid rgba(255,255,255,0.2);
-‎    font-size: 17px;
-‎}
-‎
-‎.side-menu a:hover {
-‎    background: rgba(255,255,255,0.1);
-‎}
-‎
-‎.logo {
-‎    width: 120px;
-‎    display: block;
-‎    margin: 30px auto;
-‎}
-‎
-‎
-‎/* ===== SLOGAN ===== */
-‎.slogan{
-‎    background:white;
-‎    text-align:center;
-‎    padding:15px;
-‎    font-size:18px;
-‎    color:#0b5d1e;
-‎    font-weight:bold;
-‎}
-‎
-‎/* ===== ABOUT SECTION ===== */
-‎.about{
-‎    padding:20px;
-‎    background:white;
-‎    margin:20px;
-‎    border-radius:8px;
-‎}
-‎
-‎/* ===== FILTER BOX ===== */
-‎.filter-box{
-‎    display:flex;
-‎    gap:10px;
-‎    padding:20px;
-‎    justify-content:center;
-‎    flex-wrap:wrap;
-‎}
-‎
-‎.filter-box input, .filter-box select{
-‎    padding:10px;
-‎    width:200px;
-‎    border:1px solid #ccc;
-‎    border-radius:6px;
-‎}
-‎
-‎/* Slide-up & fade-in animation for cards */
-‎.job-card {
-‎  opacity: 0;
-‎  transform: translateY(30px);
-‎  transition: all 0.6s ease-out;
-‎}
-‎
-‎/* When card becomes visible */
-‎.job-card.visible {
-‎  opacity: 1;
-‎  transform: translateY(0);
-‎}
-‎
-‎/* Optional: stagger effect for multiple cards */
-‎.job-card:nth-child(1) { transition-delay: 0.1s; }
-‎.job-card:nth-child(2) { transition-delay: 0.2s; }
-‎.job-card:nth-child(3) { transition-delay: 0.3s; }
-‎.job-card:nth-child(4) { transition-delay: 0.4s; }
-‎/* Continue as needed */
-‎
-‎/* ===== JOB CARDS ===== */
-‎.jobs-container{
-‎    display:grid;
-‎    grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
-‎    gap:20px;
-‎    padding:20px;
-‎}
-‎
-‎.job-card{
-‎    background:white;
-‎    border-radius:10px;
-‎    box-shadow:0 0 8px rgba(0,0,0,0.1);
-‎    padding:15px;
-‎}
-‎
-‎.job-card img{
-‎    width:100%;
-‎    border-radius:8px;
-‎    margin-bottom:10px;
-‎}
-‎
-‎.job-card h3{
-‎    color:#0b5d1e;
-‎    margin-bottom:5px;
-‎}
-‎
-‎.apply-btn{
-‎    display:block;
-‎    text-align:center;
-‎    background:black;
-‎    color:white;
-‎    padding:10px;
-‎    text-decoration:none;
-‎    border-radius:6px;
-‎    margin-top:10px;
-‎}
-‎
-‎/* ===== FOOTER ===== */
-‎footer{
-‎    background:#0b5d1e;
-‎    color:white;
-‎    text-align:center;
-‎    padding:15px;
-‎    margin-top:30px;
-‎    font-size:14px;
-‎}
-‎
-‎footer a{
-‎    color:white;
-‎    text-decoration:underline;
-‎    margin:0 5px;
-‎}
-‎/* ===== MOBILE RESPONSIVE FIX ===== */
-‎@media (max-width: 768px) {
-‎
-‎  body {
-‎    overflow-x: hidden;
-‎  }
-‎
-‎  .navbar {
-‎    flex-direction: column;
-‎    padding: 10px;
-‎    text-align: center;
-‎  }
-‎
-‎  .nav-left {
-‎    font-size: 18px;
-‎    margin-bottom: 10px;
-‎  }
-‎
-‎  .nav-right {
-‎    display: flex;
-‎    flex-direction: column;
-‎    gap: 8px;
-‎  }
-‎
-‎  .nav-right a {
-‎    display: block;
-‎    padding: 10px;
-‎    border-bottom: 1px solid #eee;
-‎  }
-‎
-‎  .logo {
-‎    width: 60px;
-‎    margin: 10px auto;
-‎  }
-‎
-‎  .slogan {
-‎    font-size: 14px;
-‎    padding: 10px;
-‎    text-align: center;
-‎  }
-‎
-‎
-‎  .job-card {
-‎    width: 95%;
-‎    margin: 10px auto;
-‎  }
-‎
-‎  .search-box,
-‎  select {
-‎    width: 95%;
-‎    margin: 8px auto;
-‎    display: block;
-‎  }
-‎/* ===== MOBILE RESPONSIVE FIX ===== */
-‎@media (max-width: 768px) {
-‎
-‎  body {
-‎    overflow-x: hidden;
-‎  }
-‎
-‎  .navbar {
-‎    flex-direction: column;
-‎    padding: 10px;
-‎    text-align: center;
-‎  }
-‎
-‎  .nav-left {
-‎    font-size: 18px;
-‎    margin-bottom: 10px;
-‎  }
-‎
-‎  .nav-right {
-‎    display: flex;
-‎    flex-direction: column;
-‎    gap: 8px;
-‎  }
-‎
-‎  .nav-right a {
-‎    display: block;
-‎    padding: 10px;
-‎    border-bottom: 1px solid #eee;
-‎  }
-‎
-‎  .logo {
-‎    width: 60px;
-‎    margin: 10px auto;
-‎  }
-‎
-‎  .slogan {
-‎    font-size: 14px;
-‎    padding: 10px;
-‎    text-align: center;
-‎  }
-‎
-‎  .job-card {
-‎    width: 95%;
-‎    margin: 10px auto;
-‎  }
-‎
-‎  .search-box,
-‎  select {
-‎    width: 95%;
-‎    margin: 8px auto;
-‎    display: block;
-‎  }
-‎
-‎}
-‎
-‎.hero-video {
-‎  width: 100%;           /* Mobile full width */
-‎  height: 180px;         /* Mobile height */
-‎  overflow: hidden;
-‎}
-‎
-‎.hero-video video {
-‎  width: 100%;
-‎  height: 100%;
-‎  object-fit: cover;
-‎  display: block;
-‎}
-‎
-‎
-‎/* ===== DESKTOP LAYOUT FIX ===== */
-‎@media (min-width: 1024px) {
-‎
-‎  body {
-‎    overflow-x: hidden;
-‎  }
-‎
-‎  /* Center content and limit width on desktop */
-‎  .navbar,
-‎  .slogan,
-‎  .hero-video,
-‎  .about,
-‎  .job-card,
-‎  .search-box,
-‎  .filters,
-‎  .latest-jobs {
-‎    max-width: 1100px;
-‎    margin-left: auto;
-‎    margin-right: auto;
-‎  }
-‎
-‎  /* Navbar alignment */
-‎  .navbar {
-‎    display: flex;
-‎    justify-content: space-between;
-‎    align-items: center;
-‎  }
-‎
-‎  .nav-right {
-‎    display: flex;
-‎    gap: 18px;
-‎    align-items: center;
-‎  }
-‎
-‎  /* Job cards clean width */
-‎  .job-card {
-‎    width: 100%;
-‎  }
-‎
-‎  /* Hero video proper fit for desktop */
-‎  .hero-video {
-‎    width: 100%;               /* Full width within max-width */
-‎    max-width: 1100px;         /* Prevent over push */
-‎    height: 260px;             /* Desktop height */
-‎    margin-left: auto;
-‎    margin-right: auto;
-‎    overflow: hidden;
-‎    position: relative;
-‎  }
-‎
-‎  .hero-video video {
-‎    width: 100%;
-‎    height: 100%;
-‎    object-fit: cover;
-‎    display: block;
-‎    position: absolute;
-‎    left: 0;
-‎    top: 0;
-‎  }
-‎}
 
+/* ===== GLOBAL CONTAINER FIX ===== */
 
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f5f7fa;
+}
+
+/* Keep content centered like before */
+.container,
+.section,
+.navbar,
+.hero-video,
+footer {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===== NAVBAR IMPROVE ===== */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(11,93,30,0.95);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+}
+
+.nav-left {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* ===== HERO VIDEO FIX ===== */
+
+.hero-video {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 12px;
+    margin-top: 10px;
+}
+
+.hero-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,0.45);
+    padding: 25px;
+    border-radius: 12px;
+    color: white;
+    text-align: center;
+    width: 90%;
+}
+
+.hero-btn {
+    background: #0b5d1e;
+    color: white;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.hero-btn:hover {
+    background: #0f7d2a;
+    transform: scale(1.05);
+}
+
+/* ===== ABOUT / SECTION SPACING ===== */
+
+.section {
+    margin: 40px auto;
+    padding: 25px;
+}
+
+.section h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* ===== SEARCH BOX POLISH ===== */
+
+input[type="text"],
+select {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+/* ===== JOB CARD SAFE HOVER ===== */
+
+.job-card {
+    transition: 0.3s;
+}
+
+.job-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+/* ===== BUTTON IMPROVE ===== */
+
+.apply-btn,
+button {
+    transition: 0.3s;
+}
+
+.apply-btn:hover,
+button:hover {
+    transform: scale(1.05);
+}
+
+/* ===== FOOTER ===== */
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    background: #0b5d1e;
+    color: white;
+    border-radius: 8px 8px 0 0;
+}
+
+/* ===== SLIDE ANIMATION SAFE ===== */
+
+.slide-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: all 0.8s ease;
+}
+
+.slide-left.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ===== MOBILE ===== */
+
+@media (max-width: 768px) {
+
+    .hero-video {
+        height: 200px;
+    }
+
+    .hero-content {
+        padding: 15px;
+    }
+
+}
