@@ -1,37 +1,31 @@
 
-/* ===== GLOBAL CONTAINER FIX ===== */
+/* ===== RESET ===== */
 
-body {
-    font-family: 'Segoe UI', Tahoma, sans-serif;
+* {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background: #f5f7fa;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Keep content centered like before */
-.container,
-.section,
-.navbar,
-.hero-video,
-footer {
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
+body {
+    background: #f4f7f5;
 }
 
-/* ===== NAVBAR IMPROVE ===== */
+
+/* ===== NAVBAR ===== */
 
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 20px;
-    background: rgba(11,93,30,0.95);
+    background: rgba(11, 93, 30, 0.9);
+    backdrop-filter: blur(10px);
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
     position: sticky;
     top: 0;
     z-index: 1000;
-    backdrop-filter: blur(8px);
 }
 
 .nav-left {
@@ -39,15 +33,112 @@ footer {
     font-weight: bold;
 }
 
-/* ===== HERO VIDEO FIX ===== */
+
+/* ===== HAMBURGER ===== */
+
+.hamburger {
+    width: 30px;
+    height: 22px;
+    position: relative;
+    cursor: pointer;
+}
+
+.hamburger span {
+    background: white;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    left: 0;
+    transition: 0.3s;
+}
+
+.hamburger span:nth-child(1) { top: 0; }
+.hamburger span:nth-child(2) { top: 9px; }
+.hamburger span:nth-child(3) { bottom: 0; }
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 9px;
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    bottom: 9px;
+}
+
+
+/* ===== SIDE MENU ===== */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    z-index: 998;
+}
+
+.side-menu {
+    position: fixed;
+    right: -270px;
+    top: 0;
+    width: 270px;
+    height: 100%;
+    background: rgba(11, 93, 30, 0.95);
+    backdrop-filter: blur(15px);
+    padding-top: 60px;
+    transition: 0.4s ease;
+    z-index: 999;
+}
+
+.side-menu a {
+    display: block;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.side-menu a:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.logo {
+    width: 120px;
+    display: block;
+    margin: 30px auto;
+}
+
+
+/* ===== SLOGAN ===== */
+
+.slogan {
+    background: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 18px;
+    color: #0b5d1e;
+    font-weight: bold;
+    margin: 15px auto;
+    max-width: 1100px;
+    border-radius: 8px;
+}
+
+
+/* ===== HERO VIDEO ===== */
 
 .hero-video {
-    width: 100%;
+    max-width: 1100px;
     height: 260px;
+    margin: auto;
     overflow: hidden;
-    position: relative;
-    border-radius: 12px;
-    margin-top: 10px;
+    border-radius: 10px;
 }
 
 .hero-video video {
@@ -56,115 +147,129 @@ footer {
     object-fit: cover;
 }
 
-.hero-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0,0,0,0.45);
-    padding: 25px;
-    border-radius: 12px;
-    color: white;
-    text-align: center;
-    width: 90%;
+
+/* ===== ABOUT SECTION ===== */
+
+.about {
+    background: white;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 1100px;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.08);
 }
 
-.hero-btn {
-    background: #0b5d1e;
-    color: white;
-    border: none;
-    padding: 10px 22px;
-    border-radius: 25px;
-    cursor: pointer;
-    margin-top: 10px;
-    font-weight: bold;
-    transition: 0.3s;
+.about h2 {
+    color: #0b5d1e;
+    margin-bottom: 10px;
 }
 
-.hero-btn:hover {
-    background: #0f7d2a;
-    transform: scale(1.05);
+
+/* ===== FILTER BOX ===== */
+
+.filter-box {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
-/* ===== ABOUT / SECTION SPACING ===== */
-
-.section {
-    margin: 40px auto;
-    padding: 25px;
-}
-
-.section h2 {
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-/* ===== SEARCH BOX POLISH ===== */
-
-input[type="text"],
-select {
+.filter-box input,
+.filter-box select {
     padding: 10px;
-    border-radius: 6px;
+    width: 200px;
     border: 1px solid #ccc;
-    outline: none;
+    border-radius: 6px;
 }
 
-/* ===== JOB CARD SAFE HOVER ===== */
+
+/* ===== JOBS GRID ===== */
+
+.jobs-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+
+/* ===== JOB CARD ===== */
 
 .job-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    padding: 15px;
     transition: 0.3s;
 }
 
 .job-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
-/* ===== BUTTON IMPROVE ===== */
-
-.apply-btn,
-button {
-    transition: 0.3s;
+.job-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
 }
 
-.apply-btn:hover,
-button:hover {
-    transform: scale(1.05);
+.job-card h3 {
+    color: #0b5d1e;
+    margin-bottom: 5px;
 }
+
+
+/* ===== APPLY BUTTON ===== */
+
+.apply-btn {
+    display: block;
+    text-align: center;
+    background: black;
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.apply-btn:hover {
+    background: #222;
+}
+
 
 /* ===== FOOTER ===== */
 
 footer {
-    text-align: center;
-    padding: 20px;
-    margin-top: 40px;
     background: #0b5d1e;
     color: white;
-    border-radius: 8px 8px 0 0;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+    font-size: 14px;
 }
 
-/* ===== SLIDE ANIMATION SAFE ===== */
-
-.slide-left {
-    opacity: 0;
-    transform: translateX(-40px);
-    transition: all 0.8s ease;
+footer a {
+    color: white;
+    text-decoration: underline;
+    margin: 0 5px;
 }
 
-.slide-left.show {
-    opacity: 1;
-    transform: translateX(0);
-}
 
 /* ===== MOBILE ===== */
 
 @media (max-width: 768px) {
 
     .hero-video {
-        height: 200px;
+        height: 180px;
     }
 
-    .hero-content {
-        padding: 15px;
+    .job-card {
+        width: 95%;
+        margin: auto;
     }
 
 }
