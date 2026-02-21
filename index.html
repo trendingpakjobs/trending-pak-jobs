@@ -388,139 +388,142 @@
 ‎</footer>
 ‎
 ‎<!-- FILTER + SEARCH SCRIPT -->
-‎<script>
-‎
-‎function toggleMenu() {
-‎
-‎    let menu = document.getElementById("sideMenu");
-‎    let overlay = document.getElementById("overlay");
-‎    let burger = document.getElementById("hamburger");
-‎
-‎    menu.style.right = "0";
-‎    overlay.style.display = "block";
-‎    burger.classList.add("active");
-‎}
-‎
-‎function closeMenu() {
-‎
-‎    let menu = document.getElementById("sideMenu");
-‎    let overlay = document.getElementById("overlay");
-‎    let burger = document.getElementById("hamburger");
-‎
-‎    menu.style.right = "-270px";
-‎    overlay.style.display = "none";
-‎    burger.classList.remove("active");
-‎}
-‎
-‎</script>
-‎
-‎
-‎
-‎<script>
-‎const search = document.getElementById("search");
-‎const city = document.getElementById("city");
-‎const jobs = document.querySelectorAll(".job-card");
-‎
-‎function filterJobs(){
-‎    const text = search.value.toLowerCase();
-‎    const selectedCity = city.value;
-‎
-‎    jobs.forEach(job=>{
-‎        const jobText = job.innerText.toLowerCase();
-‎        const jobCity = job.getAttribute("data-city");
-‎
-‎        if((jobText.includes(text)) && (selectedCity=="all" || jobCity==selectedCity)){
-‎            job.style.display="block";
-‎        } else {
-‎            job.style.display="none";
-‎        }
-‎    });
-‎}
-‎
-‎search.addEventListener("keyup", filterJobs);
-‎city.addEventListener("change", filterJobs);
-‎</script>
-‎
-‎
-‎<script>
-‎// Function to check if element is in viewport
-‎function isInViewport(el) {
-‎  const rect = el.getBoundingClientRect();
-‎  return (
-‎    rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 50
-‎  );
-‎}
-‎
-‎// Animate cards on scroll
-‎const cards = document.querySelectorAll('.job-card');
-‎
-‎function animateCards() {
-‎  cards.forEach(card => {
-‎    if (isInViewport(card)) {
-‎      card.classList.add('visible');
-‎    }
-‎  });
-‎}
-‎
-‎// Initial check
-‎animateCards();
-‎
-‎// On scroll
-‎window.addEventListener('scroll', animateCards);
-‎</script>
-‎
-‎
-‎<script>
-‎const jobCards = document.querySelectorAll(".job-card");
-‎
-‎jobCards.forEach(card => {
-‎    const jobTitle = card.querySelector("h3").innerText;
-‎    const jobURL = window.location.href;
-‎
-‎    const encodedText = encodeURIComponent('Check this job: ' + jobTitle + ' ' + jobURL);
-‎
-‎    card.querySelector(".share-whatsapp").href = `https://wa.me/?text=${encodedText}`;
-‎    card.querySelector(".share-facebook").href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(jobURL)}`;
-‎    card.querySelector(".share-twitter").href = `https://twitter.com/intent/tweet?text=${encodedText}`;
-‎    card.querySelector(".share-instagram").href = `https://www.instagram.com/?url=${encodeURIComponent(jobURL)}`;
-‎    card.querySelector(".share-telegram").href = `https://t.me/share/url?url=${encodeURIComponent(jobURL)}&text=${encodedText}`;
-‎});
-‎</script>
-‎
-‎
-‎<script>
-‎document.addEventListener("DOMContentLoaded", function () {
-‎
-‎  const jobs = document.querySelectorAll(".job-card");
-‎  const today = new Date();
-‎  today.setHours(0,0,0,0);
-‎
-‎  jobs.forEach(job => {
-‎    const text = job.innerText;
-‎
-‎    // Find "Apply Before" date
-‎    const match = text.match(/Apply Before:\s*(.*)/i);
-‎
-‎    if (match && match[1]) {
-‎
-‎      const deadlineText = match[1].trim();
-‎      const deadline = new Date(deadlineText);
-‎      deadline.setHours(0,0,0,0);
-‎
-‎      // If expired → hide job
-‎      if (today > deadline) {
-‎        job.style.display = "none";
-‎      }
-‎    }
-‎
-‎  });
-‎
-‎});
-‎</script>
-‎
-‎
-‎
-‎
+<script>
+
+function toggleMenu() {
+
+    let menu = document.getElementById("sideMenu");
+    let overlay = document.getElementById("overlay");
+    let burger = document.getElementById("hamburger");
+
+    menu.style.right = "0";
+    overlay.style.display = "block";
+    burger.classList.add("active");
+}
+
+function closeMenu() {
+
+    let menu = document.getElementById("sideMenu");
+    let overlay = document.getElementById("overlay");
+    let burger = document.getElementById("hamburger");
+
+    menu.style.right = "-270px";
+    overlay.style.display = "none";
+    burger.classList.remove("active");
+}
+
+</script>
+
+
+
+<script>
+// Function to check if element is in viewport
+function isInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top <= (window.innerHeight || document.documentElement.clientHeight) - 50
+  );
+}
+
+// Animate cards on scroll
+const cards = document.querySelectorAll('.job-card');
+
+function animateCards() {
+  cards.forEach(card => {
+    if (isInViewport(card)) {
+      card.classList.add('visible');
+    }
+  });
+}
+
+// Initial check
+animateCards();
+
+// On scroll
+window.addEventListener('scroll', animateCards);
+</script>
+
+
+    
+<script>
+const search = document.getElementById("search");
+const city = document.getElementById("city");
+const jobs = document.querySelectorAll(".job-card");
+
+function filterJobs(){
+    const text = search.value.toLowerCase();
+    const selectedCity = city.value;
+
+    jobs.forEach(job=>{
+        const jobText = job.innerText.toLowerCase();
+        const jobCity = job.getAttribute("data-city");
+
+        if((jobText.includes(text)) && (selectedCity=="all" || jobCity==selectedCity)){
+            job.style.display="block";
+        } else {
+            job.style.display="none";
+        }
+    });
+}
+
+search.addEventListener("keyup", filterJobs);
+city.addEventListener("change", filterJobs);
+</script>
+
+<script>
+const jobCards = document.querySelectorAll(".job-card");
+
+jobCards.forEach(card => {
+    const jobTitle = card.querySelector("h3").innerText;
+    const jobURL = window.location.href;
+
+    const encodedText = encodeURIComponent('Check this job: ' + jobTitle + ' ' + jobURL);
+
+    card.querySelector(".share-whatsapp").href = `https://wa.me/?text=${encodedText}`;
+    card.querySelector(".share-facebook").href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(jobURL)}`;
+    card.querySelector(".share-twitter").href = `https://twitter.com/intent/tweet?text=${encodedText}`;
+    card.querySelector(".share-instagram").href = `https://www.instagram.com/?url=${encodeURIComponent(jobURL)}`;
+    card.querySelector(".share-telegram").href = `https://t.me/share/url?url=${encodeURIComponent(jobURL)}&text=${encodedText}`;
+});
+</script>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const jobs = document.querySelectorAll(".job-card");
+  const today = new Date();
+  today.setHours(0,0,0,0);
+
+  jobs.forEach(job => {
+    const text = job.innerText;
+
+    // Find "Apply Before" date
+    const match = text.match(/Apply Before:\s*(.*)/i);
+
+    if (match && match[1]) {
+
+      const deadlineText = match[1].trim();
+      const deadline = new Date(deadlineText);
+      deadline.setHours(0,0,0,0);
+
+      // If expired → hide job
+      if (today > deadline) {
+        job.style.display = "none";
+      }
+    }
+
+  });
+
+});
+</script>‎
+
+
+
+
+
+
+  
 ‎</body>
 ‎  </html>
 ‎
