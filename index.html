@@ -164,22 +164,27 @@ animateAbout();
 </script>
 
 <script>
-window.addEventListener('DOMContentLoaded', () => {
+// Animate stats counters when page loads
+document.addEventListener('DOMContentLoaded', () => {
   const counters = document.querySelectorAll('.counter');
 
   counters.forEach(counter => {
-    const updateCounter = () => {
-      const target = +counter.getAttribute('data-target');
-      const c = +counter.innerText;
-      const increment = Math.ceil(target / 100);
+    counter.innerText = '0'; // start from 0
+    const target = +counter.getAttribute('data-target');
+    let current = 0;
 
-      if (c < target) {
-        counter.innerText = c + increment;
-        setTimeout(updateCounter, 30); // thoda slow
+    const increment = Math.ceil(target / 100); // slow increment
+
+    const updateCounter = () => {
+      current += increment;
+      if (current < target) {
+        counter.innerText = current;
+        requestAnimationFrame(updateCounter); // smooth animation
       } else {
-        counter.innerText = target + "+";
+        counter.innerText = target + '+'; // final value with plus
       }
     };
+
     updateCounter();
   });
 });
