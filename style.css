@@ -279,3 +279,11 @@ footer a {
     transform: translateY(-5px) scale(1.01);
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
+
+
+
+.logo {
+‎    width: 120px;
+‎    display: block;
+‎    margin: 30px auto;
+‎}
